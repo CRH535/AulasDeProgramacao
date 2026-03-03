@@ -1,3 +1,16 @@
 function submitName(name) {
-    alert("Hello, " + name + "!");    
+    alert("Hello, " + name + "!");
 }
+
+//#region
+
+/* aulas do petronio */
+
+let soma = 0;
+for (let i = 1; i <= 10; i++) {
+    soma = soma + i;
+}
+console.log(soma);
+alert(soma);
+
+//#endregion
