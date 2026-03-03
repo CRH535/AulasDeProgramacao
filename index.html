@@ -8,11 +8,11 @@
 <body>
     <form >
         <div>
-            <input type="text" placeholder="Enter your name" id="nameInput">
-            <button onclick="submitName()">Submit</button>
+            <input type="text" placeholder="Enter your name" id="nameInput"> <br>
+            <button onclick="submitName(document.getElementById('nameInput').value)">Submit</button>
         </div>
     </form>
-    <link rel="stylesheet" href=".css">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </body>
 </html>
