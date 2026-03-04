@@ -22,6 +22,7 @@ for (let i = 1; i <= 20; i++) {
 //#region
 //aula do wilgner
 
+// Função para validar o login
 // Teste git
 function submitLogin() {
   const username = document.getElementById("nameInput").value;
