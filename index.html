@@ -7,16 +7,20 @@
   </head>
 
   <body>
-    <form action="pagina2.html">
-      <div>
-        <input type="text" placeholder="Enter your name" id="nameInput" />
-        <br />
-        <button
-          onclick="submitName(document.getElementById('nameInput').value)"
-        >
-          Submit
-        </button>
-      </div>
+    <form action="javascript:submitLogin()" method="get">
+      <input
+        type="text"
+        placeholder="Enter your name"
+        id="nameInput"
+        name="teste"
+      />
+      <input
+        type="text"
+        placeholder="Enter your password"
+        id="senhaInput"
+        name="senha"
+      />
+      <button type="submit">Submit</button>
     </form>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
