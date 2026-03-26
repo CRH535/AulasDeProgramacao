@@ -1,27 +1,33 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="./style.css" />
-    <script src="script.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="quadraBranco">
+    <div class="container">
+      
       <div class="inputContainer">
-        <input
+        <input 
+          class="inputNovaTarefa"
           type="text"
-          placeholder="Adicione uma nova tarefa"
+          placeholder="O que você precisa fazer?"
           id="novaTarefa"
-        /><button id="adicionarTarefa">Adicionar</button>
+        />
+        <button class="botaoAdicionar" id="adicionarTarefa">
+          <span class="plus-icon">+</span>
+          Adicionar
+        </button>
       </div>
-      <ul id="listaTarefas">
-        <li>
-          <span>Tarefa 1</span>
-          <button class="remover">Remover</button>
-        </li>
-      </ul>
+
+      <div class="tarefaContainer">
+        <ul id="listaTarefas">
+          <!-- Tarefas serão inseridas aqui via JavaScript -->
+        </ul>
+      </div>
     </div>
   </body>
 </html>
