@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,7 +72,7 @@ header h1 {
 }
 
 .botaoAdicionar {
-  background-color: var(--primary-blue);
+  background-color: var(--background);
   color: white;
   border: none;
   border-radius: 8px;
@@ -126,7 +126,7 @@ li {
 }
 
 .btn-acao {
-  background: none;
+  background-color: var(--background);
   border: none;
   cursor: pointer;
   padding: 5px;
@@ -140,21 +140,20 @@ li {
 
 /* Responsividade */
 
-  .container {
-    padding: 20px;
-    width: 95%px;
-  }
-  
-  header h1 {
-    font-size: 1.5rem;
-  }
-  
-  .inputContainer {
-    flex-direction: row;
-  }
-  
-  .botaoAdicionar {
-    padding: 12px;
-    justify-content: center;
-  }
+.container {
+  padding: 20px;
+  width: 95%px;
+}
 
+header h1 {
+  font-size: 1.5rem;
+}
+
+.inputContainer {
+  flex-direction: row;
+}
+
+.botaoAdicionar {
+  padding: 12px;
+  justify-content: center;
+}
