@@ -1,37 +1,78 @@
-//#region
+document.addEventListener('DOMContentLoaded', () => {
+    const inputTarefa = document.getElementById('novaTarefa');
+    const botaoAdicionar = document.getElementById('adicionarTarefa');
+    const listaTarefas = document.getElementById('listaTarefas');
 
-/* aulas do petronio */
+    let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
 
-let soma = 0;
-for (let i = 1; i <= 10; i++) {
-  soma = soma + i;
-}
-/*alert("A soma dos números de 1 a 10 é: " + soma);*/
+    const salvarTarefas = () => {
+        try {
+            localStorage.setItem('tarefas', JSON.stringify(tarefas));
+        } catch (error) {
+            console.error('Erro ao salvar no localStorage:', error);
+            alert('Erro ao salvar tarefas. Verifique o espaço do navegador.');
+        }
+    };
 
-/*programa que conta apenas os numeros pares de 1 a 20*/
-let pares = 0;
-for (let i = 1; i <= 20; i++) {
-  if (i % 2 === 0) {
-    pares = pares + i;
-  }
-}
-/*alert("soma dos numeros pares de 1 ate 20:" + pares);*/
+    const renderizarTarefas = () => {
+        listaTarefas.innerHTML = '';
+        
+        if (tarefas.length === 0) {
+            listaTarefas.innerHTML = '<p class="empty-message">Nenhuma tarefa por enquanto. Adicione uma!</p>';
+            return;
+        }
 
-//#endregion
+        tarefas.forEach((tarefa, index) => {
+            const li = document.createElement('li');
+            li.setAttribute('data-index', index);
+            
+            li.innerHTML = `
+                <span class="tarefa-texto ${tarefa.concluida ? 'concluida' : ''}" onclick="toggleConcluir(${index})">
+                    ${tarefa.texto}
+                </span>
+                <div class="acoes">
+                    <button class="btn-acao btn-remover" onclick="removerTarefa(${index})">🗑️</button>
+                </div>
+            `;
+            listaTarefas.appendChild(li);
+        });
+    };
 
-//#region
-//aula do wilgner
+    const adicionarTarefa = () => {
+        const texto = inputTarefa.value.trim();
+        
+        if (texto === '') {
+            inputTarefa.classList.add('erro-validacao');
+            setTimeout(() => inputTarefa.classList.remove('erro-validacao'), 500);
+            return;
+        }
 
-// Função para validar o login
-// Teste git
-function submitLogin() {
-  const username = document.getElementById("nameInput").value;
-  const password = document.getElementById("senhaInput").value;
-  if (username === "admin" && password === "1234") {
-    alert("Login bem-sucedido!");
-    window.location.href = "pagina2.html";
-  } else {
-    alert("Credenciais inválidas. Tente novamente.");
-  }
-}
-//#endregion
+        tarefas.push({ texto, concluida: false });
+        inputTarefa.value = '';
+        salvarTarefas();
+        renderizarTarefas();
+    };
+
+    window.removerTarefa = (index) => {
+        // Remover do array imediatamente e permanentemente
+        tarefas.splice(index, 1);
+        salvarTarefas();
+        renderizarTarefas();
+    };
+
+    window.toggleConcluir = (index) => {
+        tarefas[index].concluida = !tarefas[index].concluida;
+        salvarTarefas();
+        renderizarTarefas();
+    };
+
+    botaoAdicionar.addEventListener('click', adicionarTarefa);
+
+    inputTarefa.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            adicionarTarefa();
+        }
+    });
+
+    renderizarTarefas();
+});

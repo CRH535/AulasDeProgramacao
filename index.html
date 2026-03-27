@@ -3,26 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="script.js" defer></script>
   </head>
-
   <body>
-    <form action="javascript:submitLogin()" method="get">
-      <input
-        type="text"
-        placeholder="Enter your name"
-        id="nameInput"
-        name="teste"
-      />
-      <input
-        type="text"
-        placeholder="Enter your password"
-        id="senhaInput"
-        name="senha"
-      />
-      <button type="submit">Submit</button>
-    </form>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <div class="container">
+      
+      <div class="inputContainer">
+        <input 
+          class="inputNovaTarefa"
+          type="text"
+          placeholder="O que você precisa fazer?"
+          id="novaTarefa"
+        />
+        <button class="botaoAdicionar" id="adicionarTarefa">
+          <span class="plus-icon">+</span>
+          Adicionar
+        </button>
+      </div>
+
+      <div class="tarefaContainer">
+        <ul id="listaTarefas">
+          <!-- Tarefas serão inseridas aqui via JavaScript -->
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
